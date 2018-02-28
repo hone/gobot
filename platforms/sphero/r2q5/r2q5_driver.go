@@ -159,6 +159,11 @@ func (b *Driver) Bipod() {
 	b.packetChannel <- b.craftPacket(0x17, 0x0d, []uint8{0x02})
 }
 
+func (b *Driver) Move(speed uint8, heading uint16) {
+	log.Printf("Move - speed: %v, heading: %v", speed, heading)
+	b.packetChannel <- b.craftPacket(0x16, 0x07, []uint8{speed, uint8(heading >> 8), uint8(heading & 0xFF), 0x04})
+}
+
 func (b *Driver) Sleep() {
 	log.Print("Sleep...")
 	b.packetChannel <- b.craftPacket(0x13, 0x01, []uint8{})
