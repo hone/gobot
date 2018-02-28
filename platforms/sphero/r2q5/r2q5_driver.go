@@ -149,6 +149,16 @@ func (b *Driver) Macro(num uint8) {
 	b.packetChannel <- b.craftPacket(0x17, 0x05, []uint8{0x00, num})
 }
 
+func (b *Driver) Tripod() {
+	log.Print("Tripod")
+	b.packetChannel <- b.craftPacket(0x17, 0x0d, []uint8{0x01})
+}
+
+func (b *Driver) Bipod() {
+	log.Print("Bipod")
+	b.packetChannel <- b.craftPacket(0x17, 0x0d, []uint8{0x02})
+}
+
 func (b *Driver) Sleep() {
 	log.Print("Sleep...")
 	b.packetChannel <- b.craftPacket(0x13, 0x01, []uint8{})
