@@ -27,8 +27,23 @@ func main() {
 	r2q5 := r2q5.NewDriver(bleAdaptor)
 
 	work := func() {
-		gobot.Every(3*time.Second, func() {
-			r2q5.Macro(uint8(gobot.Rand(55)))
+		heading := int16(0)
+		direction := int16(-1)
+		gobot.Every(100*time.Millisecond, func() {
+			r2q5.Dome(heading)
+			if (heading < -160) {
+				heading = -160
+			} else if (heading == -160) {
+				direction *= -1
+				heading += direction
+			} else if (heading > 180) {
+				heading = 180
+			} else if (heading == 180) {
+				direction *= -1
+				heading += direction
+			} else {
+				heading += direction
+			}
 		})
 	}
 
