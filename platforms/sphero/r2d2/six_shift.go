@@ -1,4 +1,4 @@
-package r2q5
+package r2d2
 
 func highestOrderBitIndex(num uint16) uint16 {
 	ret := uint16(0)

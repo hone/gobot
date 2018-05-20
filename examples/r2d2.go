@@ -6,7 +6,7 @@
  How to run
  Pass the Bluetooth address or name as the first param:
 
-	go run examples/r2q5.go R2-1234
+	go run examples/r2d2.go R2-1234
 
  NOTE: sudo is required to use BLE in Linux
 */
@@ -19,7 +19,7 @@ import (
 
 	"gobot.io/x/gobot"
 	"gobot.io/x/gobot/platforms/ble"
-	"gobot.io/x/gobot/platforms/sphero/r2q5"
+	"gobot.io/x/gobot/platforms/sphero/r2d2"
 )
 
 func main() {
@@ -47,9 +47,9 @@ func main() {
 		})
 	}
 
-	robot := gobot.NewRobot("R2Q5",
+	robot := gobot.NewRobot("R2D2",
 		[]gobot.Connection{bleAdaptor},
-		[]gobot.Device{r2q5},
+		[]gobot.Device{r2d2},
 		work,
 	)
 

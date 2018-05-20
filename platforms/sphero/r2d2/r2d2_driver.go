@@ -1,4 +1,4 @@
-package r2q5
+package r2d2
 
 import (
 	"bytes"
@@ -62,7 +62,7 @@ type packet struct {
 
 func NewDriver(a ble.BLEConnector) *Driver {
 	n := &Driver{
-		name:          gobot.DefaultName("R2-Q5"),
+		name:          gobot.DefaultName("R2-D2"),
 		connection:    a,
 		Eventer:       gobot.NewEventer(),
 		packetChannel: make(chan *packet, 1024),
@@ -70,7 +70,7 @@ func NewDriver(a ble.BLEConnector) *Driver {
 	return n
 }
 
-// Connection returns the connection to this R2-Q5
+// Connection returns the connection to this R2-D2
 func (b *Driver) Connection() gobot.Connection { return b.connection }
 
 // Name returns the name for the Driver
@@ -109,14 +109,14 @@ func (b *Driver) Start() (err error) {
 	return
 }
 
-// Halt stops R2-Q5 driver (void)
+// Halt stops R2-D2 driver (void)
 func (b *Driver) Halt() (err error) {
 	b.Sleep()
 	time.Sleep(750 * time.Microsecond)
 	return
 }
 
-// Init is used to initialize the R2-Q5
+// Init is used to initialize the R2-D2
 func (b *Driver) Init() (err error) {
 	b.AntiDOSOff()
 	b.Wake()

@@ -1,4 +1,4 @@
-package r2q5
+package r2d2
 
 import (
 	"testing"
